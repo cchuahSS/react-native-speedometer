@@ -45,6 +45,7 @@ class Speedometer extends Component {
       labelWrapperStyle,
       labelStyle,
       labelNoteStyle,
+      showText,
     } = this.props;
     const degree = 180;
     const perLevelDegree = calculateDegreeFromLabels(degree, labels);
@@ -122,18 +123,20 @@ class Speedometer extends Component {
           }, innerCircleStyle]}
           />
         </View>
-        <View style={[style.labelWrapper, labelWrapperStyle]}>
-          <Text style={
-            [style.label, labelStyle]}
-          >
-            {limitValue(value, minValue, maxValue, allowedDecimals)}
-          </Text>
-          <Text style={
-            [style.labelNote, { color: label.labelColor }, labelNoteStyle]}
-          >
-            {label.name}
-          </Text>
-        </View>
+        {showText && (
+          <View style={[style.labelWrapper, labelWrapperStyle]}>
+            <Text style={
+              [style.label, labelStyle]}
+            >
+              {limitValue(value, minValue, maxValue, allowedDecimals)}
+            </Text>
+            <Text style={
+              [style.labelNote, { color: label.labelColor }, labelNoteStyle]}
+            >
+              {label.name}
+            </Text>
+          </View>
+        )}
       </View>
     );
   }
@@ -145,6 +148,7 @@ Speedometer.defaultProps = {
   maxValue: 100,
   easeDuration: 500,
   allowedDecimals: 0,
+  showText: true,
   labels: [
     {
       name: 'Pathetically weak',
@@ -197,6 +201,7 @@ Speedometer.propTypes = {
   maxValue: PropTypes.number,
   easeDuration: PropTypes.number,
   allowedDecimals: PropTypes.number,
+  showText: PropTypes.bool,
   labels: PropTypes.array,
   needleImage: PropTypes.any,
   wrapperStyle: PropTypes.object,
