@@ -1,6 +1,6 @@
 {
   "name": "react-native-speedometer-deepslam",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Customizable Speedometer Implementation in React Native",
   "main": "dist/react-native-speedometer.cjs.js",
   "jsnext:main": "dist/react-native-speedometer.esm.js",
